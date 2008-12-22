@@ -1,9 +1,16 @@
 (function($){
 
+  /**
+   * Default Field Text jQuery Plugin
+   * By Johan Sahlén
+   */
+  
+
   $.fn.defaultFieldText = function(options) {
     var options = jQuery.extend({
       defaultClass: "default",
-      text: null
+      text: null,
+      textSuffix: ""
     }, options);
 
     var setText = function(clear) {
@@ -34,7 +41,7 @@
         text = label.text();
       }
 
-      field.data.defaultText = text;
+      field.data.defaultText = text+options.textSuffix;
 
       field.focus(function() {
         setText.call(this, true);
