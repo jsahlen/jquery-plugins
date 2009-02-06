@@ -10,7 +10,8 @@
     var options = jQuery.extend({
       defaultClass: "default",
       text: null,
-      textSuffix: ""
+      textSuffix: "",
+      resetOnSubmit: true
     }, options);
 
     var setText = function(clear) {
@@ -32,7 +33,6 @@
     this.each(function() {
       var field = $(this);
       var text  = "";
-      var form  = field.parents('form:first');
 
       if (options.text) {
         text = options.text;
@@ -52,9 +52,12 @@
 
       setText.call(field.get(0));
 
-      form.submit(function() {
-        setText.call(field.get(0), true);
-      });
+      if (options.resetOnSubmit) {
+        var form = field.parents('form:first');
+        form.submit(function() {
+          setText.call(field.get(0), true);
+        });
+      }
     });
 
     return this;
