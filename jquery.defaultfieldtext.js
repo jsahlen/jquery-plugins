@@ -32,6 +32,7 @@
     this.each(function() {
       var field = $(this);
       var text  = "";
+      var form  = field.parents('form:first');
 
       if (options.text) {
         text = options.text;
@@ -50,6 +51,10 @@
       });
 
       setText.call(field.get(0));
+
+      form.submit(function() {
+        setText.call(field.get(0), true);
+      });
     });
 
     return this;
