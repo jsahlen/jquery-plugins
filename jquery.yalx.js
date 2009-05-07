@@ -82,7 +82,7 @@
     };
 
     /**
-      * Show the lightbox. Bind keypress events.
+      * Show the lightbox. Bind window events.
       */
     var _show = function() {
       if (visible) return;
@@ -115,6 +115,7 @@
 
       visible = true;
       win.bind('keyup.yalx', _handleKeypress);
+      win.bind('scroll.yalx', _repositionContainer);
     };
 
     /**
@@ -150,6 +151,16 @@
     };
 
     /**
+      * Reposition the container based on scroll position.
+      */
+    var _repositionContainer = function() {
+      var container = elements.container;
+      if (!container.is(':animated')) {
+        container.css({ top: (((win.height() - container.height()) / 2) + win.scrollTop()) });
+      }
+    };
+
+    /**
       * Step to the next or previous picture.
       * @param {String} [direction='next'] 'next' or 'previous'
       */
@@ -168,13 +179,14 @@
     };
 
     /**
-      * Hide the lightbox. Unbind keypress events.
+      * Hide the lightbox. Unbind window events.
       */
     var hide = function() {
       elements.backdrop.add(elements.container).add(elements.help).animate({ opacity: 0 }, opts.fadeOutSpeed, null, function() {
         $(this).css({ display: 'none' });
         visible = false;
         win.unbind('keyup.yalx');
+        win.unbind('scroll.yalx');
       });
     };
 
