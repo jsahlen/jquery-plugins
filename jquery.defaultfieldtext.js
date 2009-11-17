@@ -1,10 +1,9 @@
+/*!
+ * Default Field Text jQuery Plugin
+ * Copyright (c) 2009 Johan Sahlén
+ * Licensed under the MIT license.
+ */
 (function($){
-
-  /**
-   * Default Field Text jQuery Plugin
-   * By Johan Sahlén
-   */
-  
 
   $.fn.defaultFieldText = function(options) {
     var options = jQuery.extend({
