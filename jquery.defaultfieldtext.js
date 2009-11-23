@@ -16,7 +16,7 @@
     var setText = function(clear) {
       var field = $(this);
       var cur   = field.val();
-      var def   = field.data.defaultText;
+      var def   = field.data('defaultText');
 
       if (clear && cur == def) {
         field.removeClass(options.defaultClass);
@@ -41,7 +41,7 @@
         text = label.text();
       }
 
-      field.data.defaultText = text+options.textSuffix;
+      field.data('defaultText', text+options.textSuffix);
 
       field.focus(function() {
         setText.call(this, true);
