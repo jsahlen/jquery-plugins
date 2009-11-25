@@ -6,7 +6,7 @@
 (function($){
 
   $.fn.defaultFieldText = function(options) {
-    var options = jQuery.extend({
+    options = jQuery.extend({
       defaultClass: "default",
       text: null,
       textSuffix: "",
