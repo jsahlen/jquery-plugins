@@ -1,3 +1,9 @@
+/*!
+ * Tab Switcher jQuery Plugin
+ * Copyright (c) 2009 Johan Sahlén
+ * Licensed under the MIT license.
+ */
+
 (function($){
 
   $.fn.tabSwitcher = function(options) {
