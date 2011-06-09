@@ -36,25 +36,25 @@
       if (options.text) {
         text = options.text;
       } else {
-        var id    = field.attr('id');
-        var label = $('label[for='+id+']');
+        var id    = field.attr("id");
+        var label = $("label[for="+id+"]");
         text = label.text();
       }
 
-      field.data('defaultText', text+options.textSuffix);
+      field.data("defaultText", text+options.textSuffix);
 
-      field.focus(function() {
+      field.bind("focus", function() {
         setText.call(this, true);
       }).blur(function() {
         setText.call(this);
       });
 
-      setText.call(field.get(0));
+      setText.call(field);
 
       if (options.resetOnSubmit) {
-        var form = field.parents('form:first');
-        form.submit(function() {
-          setText.call(field.get(0), true);
+        var form = field.parents("form:first");
+        form.bind("submit", function() {
+          setText.call(field, true);
         });
       }
     });
